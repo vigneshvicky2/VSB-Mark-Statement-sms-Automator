@@ -1,0 +1,5 @@
+tkinter
+pandas
+python-docx
+selenium
+openpyxl 
