@@ -194,8 +194,10 @@ def main():
     ctk.CTkButton(frame, text="Start Process", command=start_process).pack(pady=20)
 
     # Add created by label
+    created_by_label1 = ctk.CTkLabel(root, text="Please note that this program is compatible exclusively with Google Chrome.", font=("Helvetica", 10,"bold"))
     created_by_label = ctk.CTkLabel(root, text="Created by VIGNESH K", font=("Helvetica", 10))
-    created_by_label.pack(side="left", padx=20, pady=10)
+    created_by_label1.pack(side="left", padx=20, pady=10)
+    created_by_label.pack(side="right", padx=20, pady=10)
 
     root.mainloop()
 
