@@ -6,11 +6,17 @@ from docx.shared import Inches
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 from PIL import ImageGrab
 import os
 import threading
 import shutil
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 ctk.set_appearance_mode("System")  # Modes: "System" (default), "Dark", "Light"
 ctk.set_default_color_theme("blue")  # Themes: "blue" (default), "green", "dark-blue"
@@ -67,20 +73,32 @@ def send_messages(driver, contacts, messages, screenshot_dir):
     screenshots = []
     for contact, message in zip(contacts, messages):
         try:
-            start_chat_button = driver.find_element(By.XPATH, '/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-main-nav/div/mw-fab-link/a/span[2]/div/div')
+            # Wait for the start chat button to be clickable
+            start_chat_button = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, '/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-main-nav/div/mw-fab-link/a/span[2]/div/div'))
+            )
             start_chat_button.click()
             time.sleep(2)
 
-            search_box = driver.find_element(By.XPATH, '/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-new-conversation-container/mw-new-conversation-sub-header/div/div[2]/mw-contact-chips-input/div/div/input')
+            # Wait for the search box to be present
+            search_box = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, '/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-new-conversation-container/mw-new-conversation-sub-header/div/div[2]/mw-contact-chips-input/div/div/input'))
+            )
             search_box.send_keys(contact)
             search_box.send_keys(Keys.ENTER)
             time.sleep(3)
 
-            first_contact = driver.find_element(By.XPATH, '(//span[contains(@class, "contact-name")])[1]')
+            # Wait for the first contact to be clickable
+            first_contact = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, '(//span[contains(@class, "contact-name")])[1]'))
+            )
             first_contact.click()
             time.sleep(3)
 
-            message_box = driver.find_element(By.XPATH, '/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-conversation-container/div/div[1]/div/mws-message-compose/div/div[2]/div/div/mws-autosize-textarea/textarea')
+            # Wait for the message box to be present
+            message_box = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, '/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-conversation-container/div/div[1]/div/mws-message-compose/div/div[2]/div/div/mws-autosize-textarea/textarea'))
+            )
             lines = message.split('\n')
             for line in lines:
                 message_box.send_keys(line)
@@ -95,6 +113,7 @@ def send_messages(driver, contacts, messages, screenshot_dir):
             screenshots.append(screenshot_path)
 
         except Exception as e:
+            logging.error(f"Failed to send message to {contact}: {e}")
             messagebox.showerror("Error", f"Failed to send message to {contact}: {e}")
 
     return screenshots
@@ -194,10 +213,8 @@ def main():
     ctk.CTkButton(frame, text="Start Process", command=start_process).pack(pady=20)
 
     # Add created by label
-    created_by_label1 = ctk.CTkLabel(root, text="Please note that this program is compatible exclusively with Google Chrome.", font=("Helvetica", 10,"bold"))
     created_by_label = ctk.CTkLabel(root, text="Created by VIGNESH K", font=("Helvetica", 10))
-    created_by_label1.pack(side="left", padx=20, pady=10)
-    created_by_label.pack(side="right", padx=20, pady=10)
+    created_by_label.pack(side="left", padx=20, pady=10)
 
     root.mainloop()
 
