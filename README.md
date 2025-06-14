@@ -18,7 +18,7 @@ This Python-based desktop application automates the process of sending personali
 
 ## 🛠️ Tech Stack
 
-* Python 3.x
+* Python 3.10.7
 * CustomTkinter
 * Selenium WebDriver
 * pandas
@@ -41,7 +41,7 @@ project/
 
 ## 📋 Prerequisites
 
-* Python 3.x installed
+* Python 3.10.7 installed
 * Google Chrome browser
 * Required Python packages (install below)
 
@@ -52,7 +52,7 @@ project/
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/yourusername/marks-sms-automation.git
+   git clone https://github.com/vigneshvicky2/marks-sms-automation.git
    cd marks-sms-automation
    ```
 
@@ -112,7 +112,7 @@ project/
 
 ## 📸 Screenshots
 
-*(Add screenshots of your UI and generated document here if needed)*
+![image](https://github.com/user-attachments/assets/70d86932-3285-4e6b-852b-06c350c21f91)
 
 ---
 
@@ -126,7 +126,3 @@ Engineering Student | Passionate about Automation and Software Solutions
 ## 📃 License
 
 This project is open source and free to use. Feel free to contribute or customize it!
-
----
-
-Let me know if you'd like the README in PDF format, or translated into Tamil or any other language!
