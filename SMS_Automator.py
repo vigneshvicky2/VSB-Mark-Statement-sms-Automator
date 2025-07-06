@@ -82,7 +82,7 @@ def send_messages(driver, contacts, messages, screenshot_dir):
 
             # Wait for the search box to be present
             search_box = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, '/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-new-conversation-container/mw-new-conversation-sub-header/div/div[2]/mw-contact-chips-input/div/div/input'))
+                EC.presence_of_element_located((By.XPATH, '/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-new-conversation-container/mw-new-conversation-sub-header/div/div/div[2]/mw-contact-chips-input/div/div/input'))
             )
             search_box.send_keys(contact)
             search_box.send_keys(Keys.ENTER)
