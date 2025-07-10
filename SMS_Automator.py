@@ -12,7 +12,6 @@ import time
 from PIL import ImageGrab
 import os
 import threading
-import shutil
 import logging
 
 # Set up logging
@@ -60,7 +59,7 @@ def connect_google_messages():
     driver.get("https://messages.google.com/web")
     
     messagebox.showinfo("Info", "Please scan the QR code to connect to Google Messages.")
-    time.sleep(30)  # Wait for the user to scan the QR code
+    time.sleep(60)  # Wait for the user to scan the QR code
     
     if "Messages" in driver.title:
         messagebox.showinfo("Success", "Connection succeeded.")
