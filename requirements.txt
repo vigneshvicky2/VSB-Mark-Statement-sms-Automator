@@ -1,5 +1,7 @@
-tkinter
 pandas
 python-docx
 selenium
 openpyxl 
+customtkinter
+Pillow
+webdriver-manager
