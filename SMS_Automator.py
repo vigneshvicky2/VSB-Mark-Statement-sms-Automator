@@ -190,14 +190,14 @@ def main():
 
     excel_frame = ctk.CTkFrame(frame, corner_radius=10)
     excel_frame.pack(pady=10, fill="x", padx=10)
-    ctk.CTkLabel(excel_frame, text="Upload Excel File:", font=("Helvetica", 12)).pack(side="left", padx=5, pady=10)
+    ctk.CTkLabel(excel_frame, text="Upload Phone Number Excel File:", font=("Helvetica", 12)).pack(side="left", padx=5, pady=10)
     ctk.CTkButton(excel_frame, text="Browse", command=upload_excel).pack(side="left", padx=5, pady=10)
     excel_label = ctk.CTkLabel(excel_frame, text="", font=("Helvetica", 10))
     excel_label.pack(side="left", padx=5, pady=10)
 
     word_frame = ctk.CTkFrame(frame, corner_radius=10)
     word_frame.pack(pady=10, fill="x", padx=10)
-    ctk.CTkLabel(word_frame, text="Upload Word File:", font=("Helvetica", 12)).pack(side="left", padx=5, pady=10)
+    ctk.CTkLabel(word_frame, text="Upload Marks Statement Word File:", font=("Helvetica", 12)).pack(side="left", padx=5, pady=10)
     ctk.CTkButton(word_frame, text="Browse", command=upload_word).pack(side="left", padx=5, pady=10)
     word_label = ctk.CTkLabel(word_frame, text="", font=("Helvetica", 10))
     word_label.pack(side="left", padx=5, pady=10)
