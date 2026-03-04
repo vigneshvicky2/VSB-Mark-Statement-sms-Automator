@@ -80,7 +80,7 @@ project/
 1. **Run the application**:
 
    ```bash
-   python main.py
+   Just install Mark Statement SMS Automator.exe setup and open the software
    ```
 
 2. **Upload Files**:
